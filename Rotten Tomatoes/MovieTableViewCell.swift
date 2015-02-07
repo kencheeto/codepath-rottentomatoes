@@ -14,6 +14,8 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var movieSynopsis: UILabel!
 
+    var movie: NSDictionary!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

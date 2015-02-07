@@ -38,7 +38,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("MovieTableViewCell") as MovieTableViewCell
-        
         var movie = self.movies[indexPath.row]
 
         cell.movieSynopsis.text = movie["synopsis"] as? String
@@ -47,6 +46,9 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         let posterUrl = movie.valueForKeyPath("posters.thumbnail") as String
         let highResPosterUrl = posterUrl.stringByReplacingOccurrencesOfString("_tmb", withString: "_ori")
         cell.movieImageView.setImageWithURL(NSURL(string: highResPosterUrl))
+        
+        cell.movie = movie
+        
         return cell
     }
     
@@ -57,10 +59,11 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
     */
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var detailViewController = segue.destinationViewController as MovieDetailViewController
+        let tableViewCell = sender as MovieTableViewCell
+        detailViewController.movie = tableViewCell.movie
+    }
 
 }

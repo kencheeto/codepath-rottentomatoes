@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--Movies View Controller-->
+        <!--Rotten Tomatoes-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="MoviesViewController" customModule="Rotten_Tomatoes" customModuleProvider="target" sceneMemberID="viewController">
@@ -55,7 +55,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="pSc-bc-MXm"/>
+                    <navigationItem key="navigationItem" title="Rotten Tomatoes" id="8zT-qh-yrc"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="tableView" destination="auf-nW-CUm" id="trt-4F-lmM"/>
@@ -65,7 +65,7 @@
             </objects>
             <point key="canvasLocation" x="1298" y="368"/>
         </scene>
-        <!--Movie Detail View Controller-->
+        <!--Title-->
         <scene sceneID="yZi-6F-eIM">
             <objects>
                 <viewController id="E0M-lO-Z3a" customClass="MovieDetailViewController" customModule="Rotten_Tomatoes" customModuleProvider="target" sceneMemberID="viewController">
@@ -74,7 +74,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="DGl-EX-2nA"/>
+                    <navigationItem key="navigationItem" title="Title" id="R8u-ok-khb"/>
+                    <connections>
+                        <outlet property="navTitle" destination="R8u-ok-khb" id="3Sa-AP-Fip"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="chF-Ni-86d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

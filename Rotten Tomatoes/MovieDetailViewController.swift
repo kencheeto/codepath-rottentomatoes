@@ -10,9 +10,14 @@ import UIKit
 
 class MovieDetailViewController: UIViewController {
 
+    @IBOutlet weak var navTitle: UINavigationItem!
+    
+    var movie: NSDictionary!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.navTitle.title = self.movie["title"] as NSString
         // Do any additional setup after loading the view.
     }
 
