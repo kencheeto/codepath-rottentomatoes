@@ -34,7 +34,7 @@
                                                     <rect key="frame" x="8" y="0.0" width="54" height="80"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie synopsis" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c9T-zg-ZBR">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie synopsis" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c9T-zg-ZBR">
                                                     <rect key="frame" x="70" y="35" width="242" height="36.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -65,7 +65,7 @@
             </objects>
             <point key="canvasLocation" x="1298" y="368"/>
         </scene>
-        <!--Title-->
+        <!--Movie Title-->
         <scene sceneID="yZi-6F-eIM">
             <objects>
                 <viewController id="E0M-lO-Z3a" customClass="MovieDetailViewController" customModule="Rotten_Tomatoes" customModuleProvider="target" sceneMemberID="viewController">
@@ -74,7 +74,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="R8u-ok-khb"/>
+                    <navigationItem key="navigationItem" title="Movie Title" id="R8u-ok-khb"/>
                     <connections>
                         <outlet property="navTitle" destination="R8u-ok-khb" id="3Sa-AP-Fip"/>
                     </connections>

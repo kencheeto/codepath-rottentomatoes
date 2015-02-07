@@ -25,11 +25,14 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         let url = NSURL(string: "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=ezghpzed6xckr24nv36b2de8")
         let request = NSURLRequest(URL: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:{ (response, data, error) in
-            var errorValue: NSError? = nil
-            let dictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &errorValue) as NSDictionary
-            self.movies = dictionary["movies"] as [NSDictionary]
-            self.tableView.reloadData()
-            SVProgressHUD.dismiss()
+            if error != nil {
+                
+            } else {
+                let dictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
+                self.movies = dictionary["movies"] as [NSDictionary]
+                self.tableView.reloadData()
+                SVProgressHUD.dismiss()
+            }
         })
         // Do any additional setup after loading the view.
     }
