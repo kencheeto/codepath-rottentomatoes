@@ -26,5 +26,14 @@ class MovieTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func setup() {
+        movieSynopsis.text = movie["synopsis"] as? String
+        movieTitle.text = movie["title"] as? String
+        
+        let posterUrl = movie.valueForKeyPath("posters.thumbnail") as String
+        let highResPosterUrl = posterUrl.stringByReplacingOccurrencesOfString("_tmb", withString: "_ori")
+        movieImageView.setImageWithURL(NSURL(string: highResPosterUrl))
+    }
 
 }
