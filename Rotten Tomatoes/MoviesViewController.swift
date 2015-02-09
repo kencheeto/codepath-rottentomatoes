@@ -13,27 +13,23 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     var movies: [NSDictionary] = []
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var networkErrorLabel: UILabel!
+    @IBOutlet weak var networkErrorButton: UIButton!
+    @IBOutlet weak var networkErrorView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.delegate = self
         tableView.dataSource = self
-
+        
         refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: "fetch", forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
         
-        self.networkErrorLabel.hidden = true
-
+        self.networkErrorView.hidden = true
+        self.networkErrorButton.addTarget(self, action: "fetch", forControlEvents: UIControlEvents.TouchUpInside)
+        
         fetch()
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -50,16 +46,20 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     func fetch() {
         SVProgressHUD.show()
-        self.networkErrorLabel.hidden = true
+        self.networkErrorView.hidden = true
         let url = NSURL(string: "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=ezghpzed6xckr24nv36b2de8")
         let request = NSURLRequest(URL: url!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:{ (response, data, error) in
             self.refreshControl.endRefreshing()
-            if error != nil {
-//            if true {
-                self.networkErrorLabel.hidden = false
+            let maybe = Int(arc4random_uniform(2))
+//            if error != nil {
+            println(maybe)
+          if maybe == 1 {
+                self.networkErrorView.hidden = false
                 self.tableView.hidden = true
             } else {
+                self.networkErrorView.hidden = true
+                self.tableView.hidden = false
                 let dictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
                 self.movies = dictionary["movies"] as [NSDictionary]
             }
@@ -67,10 +67,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             SVProgressHUD.dismiss()
         })
     }
-    
-    func onRefresh() {
-        fetch()
-    }
+
     /*
     // MARK: - Navigation
 
